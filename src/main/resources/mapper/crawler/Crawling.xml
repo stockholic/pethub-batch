@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.pethub.job.crawler.dao.CrawlingDao">
+
+	<select id="selectSiteLinkList" resultType="kr.pethub.job.crawler.vo.SiteLink">
+		SELECT 
+		     si.site_srl
+		    , si.site_nm
+      		, sl.link_srl
+		  	, sl.link_nm
+		  	, sl.link_url
+		  	, sl.link_cls
+		  	, sl.link_mtd_lst
+		  	, sl.link_mtd_cts
+		FROM site_info si, site_link sl
+		WHERE si.site_srl = sl.site_srl
+		AND sl.use_yn = 'Y'
+
+		<if test="siteSrl != '' and siteSrl != null">
+		AND	si.site_srl = #{siteSrl} 
+		</if>
+	</select>
+
+	<select id="selectSiteLinkDataList" resultType="kr.pethub.job.crawler.vo.SiteLinkData">
+		SELECT 
+		  	 data_srl
+			, site_srl
+			, link_srl
+			, data_id
+			, data_title
+			, data_link
+			, data_img
+			, data_content
+			, reg_dt
+			, upt_dt
+		FROM site_link_data
+		LIMIT 0,10
+	</select>
+
+	<insert id="insertSiteLinkData">
+		INSERT INTO site_link_data(
+			  site_srl
+			, link_srl
+			, data_id
+			, data_title
+			, data_link
+			, data_img
+			, data_content
+		) VALUES (
+			  #{siteSrl}
+			, #{linkSrl}
+			, #{dataId}
+			, #{dataTitle}
+			, #{dataLink}
+			, #{dataImg}
+			, #{dataContent}
+		)
+	</insert>
+	
+	
+	<update id="updateSiteLinkData">
+		UPDATE site_link_data SET
+			 data_title = #{dataTitle}
+			, data_link = #{dataLink}
+			
+			<if test="dataImg != '' and dataImg != null">
+			, data_img = #{dataImg}
+			</if>
+			
+			, upt_dt = SYSDATE()
+		WHERE 	site_srl = #{siteSrl}
+		AND link_srl = #{linkSrl}
+		AND data_id = #{dataId}
+	</update>
+	
+	<delete id="deleteSiteLinkData">
+		DELETE FROM  site_link_data WHERE data_srl = #{dataSrl}
+	</delete>
+	
+	
+	<update id="updateSiteLinkCnt">
+		UPDATE site_link SET
+			 link_cnt = #{linkCnt}
+			, exc_dt = SYSDATE()
+		WHERE link_srl = #{linkSrl}
+	</update>
+	
+	
+	<insert id="insertSiteLinkLog">
+		INSERT INTO site_link_log(
+			 site_srl
+			, link_srl
+			, link_cnt
+			, log_cd
+			, log_msg
+			, reg_dt
+		) VALUES (
+			 #{siteSrl}
+			, #{linkSrl}
+			, #{linkCnt}
+			, #{logCd}
+			, #{logMsg}
+			, SYSDATE()
+		)
+	</insert>
+
+</mapper>  
