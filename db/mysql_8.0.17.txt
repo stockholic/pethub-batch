@@ -67,6 +67,9 @@ default_authentication_plugin=mysql_native_password
 	-- 유저 생성
 	mysql> CREATE USER 'pethub'@'localhost' IDENTIFIED BY '패스워드';
 	mysql> GRANT ALL ON *.* TO 'pethub'@'localhost';
-	mysql> flush privileges;
+	
+	mysql> GRANT USAGE ON *.* TO 'pethub'@'localhost' IDENTIFIED BY '패스워드';		-- 패스워드 변경
+	
+	
 
 	 grant all privileges on *.* to 'pethub'@'locahost' identified by '패스워드;  -- 안됨 ㅋ
