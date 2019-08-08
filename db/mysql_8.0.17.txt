@@ -1,0 +1,72 @@
+
+
+1.  Linux - Generi 다운로드
+	Linux - Generic (glibc 2.12) (x86, 64-bit), Compressed TAR Archive
+
+
+2. 설치
+	 # tar -xvf mysql-8.0.17-linux-glibc2.12-x86_64.tar.xz
+
+	 #  cp -r mysql-8.0.17-linux-glibc2.12-x86_64 /usr/local/mysql/
+
+	 # /usr/local/mysql/bin/mysqld --no-defaults  --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data  --initialize-insecure
+
+	 # chown -R mysql:mysql /usr/local/mysql
+
+	 # cp  /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
+
+	 #  chmod 755 /etc/init.d/mysqld
+
+	# chkconfig –add mysqld
+
+	# chkconfig mysqld on
+
+
+3 .설정
+
+# vi /etc	
+-------------------------------------------------
+[client]
+default-character-set = utf8
+port = 3306
+socket = /tmp/mysql.sock
+default-character-set = utf8
+
+[mysqld]
+port = 3306
+datadir=/usr/local/mysql/data
+socket=/tmp/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+bind-address = 127.0.0.1
+default_authentication_plugin=mysql_native_password
+
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+
+-------------------------------------------------
+
+
+4 .계정
+	--initialize-insecure  옵션사용으로 바로  mysql 접속  후 패스워드 변경
+
+	-- root 패스워드 변경
+	mysql>  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '패스워드';
+	mysql> FLUSH PRIVILEGES;
+	 
+
+	-- 유저 생성
+	mysql> CREATE USER 'pethub'@'localhost' IDENTIFIED BY '패스워드';
+	mysql> GRANT ALL ON *.* TO 'pethub'@'localhost';
+	mysql> flush privileges;
+
+	 grant all privileges on *.* to 'pethub'@'locahost' identified by '패스워드;  -- 안됨 ㅋ
