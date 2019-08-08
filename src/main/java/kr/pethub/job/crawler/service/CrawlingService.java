@@ -28,24 +28,28 @@ public class CrawlingService {
 	/**
 	 * Reflction 을 이용하여 Class 호출 실행
 	 */
-	public void crawling() {
-		crawling(""); 
+	public void crawling(String siteSrl) {
+		
+		SiteLink siteLink = new SiteLink();
+		siteLink.setSiteSrl(siteSrl);
+		
+		crawling(siteLink); 
 	}
 	
 	/**
 	 * Reflction 을 이용하여 Class 호출 실행
 	 * @param siteSrl
 	 */
-	@SuppressWarnings({ "unchecked", "unused" })
-	public void crawling(String siteSrl) {
+	@SuppressWarnings("unchecked")
+	public void crawling(SiteLink siteLink) {
 		
 		//사이트 Crawling 대상 URL
-		List<SiteLink> linkList = crawlingDao.selectSiteLinkList(siteSrl);
+		List<SiteLink> linkList = crawlingDao.selectSiteLinkList(siteLink);
 		 String patternUrl = "^(https?):\\/\\/([^:\\/\\s]+)(:([^\\/]*))?((\\/[^\\s/\\/]+)*)?\\/?([^#\\s\\?]*)(\\?([^#\\s]*))?(#(\\w*))?$";
 		
 		for( SiteLink lst : linkList ) {
 
-			logger.info("----------------------------- " + lst.getLinkNm() +" :  "+ lst.getLinkUrl() );
+			logger.info("--------- " + lst.getSiteNm() + " > " +  lst.getLinkNm() +" : "+ lst.getLinkUrl() + " ---------" );
 			
 			int linkCnt = 0;
 			SiteLinkLog siteLinkLog = new SiteLinkLog();
@@ -89,6 +93,7 @@ public class CrawlingService {
 						}
 						
 						linkCnt++;
+						logger.info(siteLinkData.getDataId() + "\t" + siteLinkData.getDataTitle());
 					}
 					
 				}
@@ -117,10 +122,10 @@ public class CrawlingService {
 			}finally {
 				
 				//최종 리스트 수, 실행일 업데이트
-				SiteLink siteLink = new SiteLink();
-				siteLink.setLinkCnt(linkCnt);
-				siteLink.setLinkSrl(lst.getLinkSrl());
-				crawlingDao.updateSiteLinkCnt(siteLink);
+				SiteLink vo = new SiteLink();
+				vo.setLinkCnt(linkCnt);
+				vo.setLinkSrl(lst.getLinkSrl());
+				crawlingDao.updateSiteLinkCnt(vo);
 			}
 			
 			

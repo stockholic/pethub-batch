@@ -1,6 +1,5 @@
 package kr.pethub.job.crawler.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +17,9 @@ public class CrawlingDao extends MultiSqlSessionDaoSupport{
 	 * 사이트 Crawling 대상 URL 목록
 	 * @return
 	 */
-	public List<SiteLink> selectSiteLinkList(String siteSrl) {
+	public List<SiteLink> selectSiteLinkList(SiteLink siteLink) {
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("siteSrl",  siteSrl);
-		
-		return selectList("selectSiteLinkList", map);
+		return selectList("selectSiteLinkList", siteLink);
 	}
 	
 	/**

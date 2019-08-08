@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.pethub.job.crawler.service.CrawlingService;
+import kr.pethub.job.crawler.vo.SiteLink;
 
 @Component
 public class jobHandler {
@@ -27,12 +28,23 @@ public class jobHandler {
 		
 		String job  = params.get("job").toString();
 		
+		
+		//---------------------------------- 크롤로 작업
 		if("crawling".equals(job)){
 			
-			crawlingService.crawling();
+			logger.info("batchItv : {} : ",  params.get("batchItv" ));
+			logger.info("siteSrl : {} : ",  params.get("siteSrl" ));
 			
-			logger.info("startDt : {} : ",  params.get("startDt" ));
-			logger.info("endDt : {} : ",  params.get("endDt" ));
+
+			if(params.get("siteSrl") != null || params.get("batchItv") != null) {
+				SiteLink siteLink = new SiteLink();
+				siteLink.setSiteSrl(params.get("siteSrl" ));
+				siteLink.setBatchItv(params.get("batchItv" ));
+				
+				crawlingService.crawling(siteLink);
+			}else {
+				logger.info("batchItv or siteSrl not found");
+			}
 			
 		}else {
 			logger.info("Job is not found");

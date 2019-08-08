@@ -9,7 +9,7 @@ import kr.pethub.core.constants.SystemConstants;
 
 public class PropertyEncrypt extends BaseTestCase{
 	
-	 private String USER = "shkr";
+	 private String USER = "phkr";
 	 private String PASSWORD = "Wkwkdaus";
 	 
 	 private @Value("${deploy}") String deploy;

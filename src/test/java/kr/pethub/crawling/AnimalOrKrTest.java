@@ -3,6 +3,7 @@ package kr.pethub.crawling;
 import java.io.IOException;
 
 
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,6 @@ import kr.pethub.site.AnimalOrKr;
  *
  */
 public class AnimalOrKrTest extends BaseTestCase{
-//public class AnimalOrKrTest {
 	
 	 Logger logger = LoggerFactory.getLogger(this.getClass());
 	 

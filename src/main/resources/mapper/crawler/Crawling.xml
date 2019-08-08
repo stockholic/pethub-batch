@@ -21,6 +21,10 @@
 		<if test="siteSrl != '' and siteSrl != null">
 		AND	si.site_srl = #{siteSrl} 
 		</if>
+		<if test="batchItv != '' and batchItv != null">
+		AND	sl.batch_itv = #{batchItv} 
+		</if>
+		
 	</select>
 
 	<select id="selectSiteLinkDataList" resultType="kr.pethub.job.crawler.vo.SiteLinkData">

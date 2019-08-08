@@ -46,7 +46,7 @@ public class initBatch {
 		System.out.println("-----------------------------------------------");
 		System.out.println("\t잡명을 입력하세요 !!");
 		System.out.println("\tUage : java -jar 잡명 [파라미터 ...]");
-		System.out.println("\tex) java -jar job startDt=2015 endDt=2016");
+		System.out.println("\tex) java -jar crawling batchItv=30M siteSrl=7");
 		System.out.println("-----------------------------------------------");
 	}
 

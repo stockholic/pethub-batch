@@ -11,6 +11,7 @@ public class SiteLink {
 	private String linkMtdLst;			// 실행 목록 메소드
 	private String linkMtdCts;			// 실행 내용 메소드
 	private int linkCnt;					// 링크수 
+	private String batchItv;				// 배치 간격
 	
 	public String getLinkSrl() {
 		return linkSrl;
@@ -65,6 +66,12 @@ public class SiteLink {
 	}
 	public void setLinkCnt(int linkCnt) {
 		this.linkCnt = linkCnt;
+	}
+	public String getBatchItv() {
+		return batchItv;
+	}
+	public void setBatchItv(String batchItv) {
+		this.batchItv = batchItv;
 	}
 	
 	
