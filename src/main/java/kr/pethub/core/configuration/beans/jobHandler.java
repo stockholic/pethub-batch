@@ -54,7 +54,7 @@ public class jobHandler {
 			if(params.get("day") != null ){
 				crawlingService.deleteSiteLinkData( Integer.parseInt(params.get("day")));
 			}else {
-				logger.info("day parameter require. ex) day=20");
+				logger.info("day parameter required. ex) day=20");
 			}
 			
 		}else {
