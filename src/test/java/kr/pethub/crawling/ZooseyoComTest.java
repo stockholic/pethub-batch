@@ -28,7 +28,7 @@ public class ZooseyoComTest extends BaseTestCase{
 	ZooseyoCom obj = new ZooseyoCom();
 	
 	@Test
-	public void 강아지_목록추출() throws IOException{
+	public void 강아지무료_목록추출() throws IOException{
 		
 		String linkUrl = "http://www.zooseyo.com/sale/sale_list.php?animal=dog";
 		
@@ -36,7 +36,7 @@ public class ZooseyoComTest extends BaseTestCase{
 	}
 	
 	@Test
-	public void 강아지_내용추출() throws IOException{
+	public void 강아지무료_내용추출() throws IOException{
 		
 		SiteLinkData siteLinkData = new SiteLinkData();
 		siteLinkData.setDataLink("http://www.zooseyo.com/sale/sale_view.php?type=f&oid_no=bbag1562389717647&no=277599&page=1&kind=&area=");
@@ -47,7 +47,7 @@ public class ZooseyoComTest extends BaseTestCase{
 	
 	
 	@Test
-	public void 고양이_목록추출() throws IOException{
+	public void 고양이무료_목록추출() throws IOException{
 		
 		String linkUrl = "http://www.zooseyo.com/sale/sale_list.php?animal=cat";
 		
@@ -55,12 +55,30 @@ public class ZooseyoComTest extends BaseTestCase{
 	}
 
 	@Test
-	public void 고양이_내용추출() throws IOException{
+	public void 고양이무료_내용추출() throws IOException{
 		
 		SiteLinkData siteLinkData = new SiteLinkData();
 		siteLinkData.setDataLink("http://www.zooseyo.com/sale/sale_view.php?type=f&oid_no=bbag1562571054429&no=277836&page=1&kind=&area=");
 		
 		obj.getCatContent(siteLinkData);
+		
+	}
+	
+	@Test
+	public void 강아지유료_목록추출() throws IOException{
+		
+		String linkUrl = "http://www.zooseyo.com/sale/sale.php";
+		
+		obj.getDogList2(linkUrl);
+	}
+	
+	@Test
+	public void 강아지유료_내용추출() throws IOException{
+		
+		SiteLinkData siteLinkData = new SiteLinkData();
+		siteLinkData.setDataLink("http://www.zooseyo.com/sale/sale_view.php?oid_no=zzang1565314229460&no=1122256&page=1&kind=토이푸들&area=");
+		
+		obj.getDogContent2(siteLinkData);
 		
 	}
 	

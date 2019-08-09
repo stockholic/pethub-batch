@@ -39,7 +39,7 @@ public class JsoupUtil {
 	 * @return
 	 */
 	public static String specialCharacterRemove(String str) {
-		String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z0-9\\s,]";
+		String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z0-9\\s,\\/\\:\\.]";
 		str = str.replaceAll(match, "");
 		return str;
 	}
