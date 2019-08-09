@@ -185,7 +185,6 @@ public class ZooseyoCom {
 		List<SiteLinkData> list = new ArrayList<SiteLinkData>();
 		
 		String selector = "body > table:nth-child(6) > tbody > tr > td:nth-child(2) > table:nth-child(10) > tbody > tr > td > table";
-		
 		String domain = "http://www.zooseyo.com";
 		String patternId ="(.*)(no=)([0-9]+)(.*)";
 
