@@ -32,8 +32,8 @@ public class jobHandler {
 		//---------------------------------- 크롤로 작업
 		if("crawling".equals(job)){
 			
-			logger.info("batchItv : {} : ",  params.get("batchItv" ));
-			logger.info("siteSrl : {} : ",  params.get("siteSrl" ));
+			logger.info("batchItv : {}",  params.get("batchItv" ));
+			logger.info("siteSrl : {}",  params.get("siteSrl" ));
 			
 
 			if(params.get("siteSrl") != null || params.get("batchItv") != null) {
@@ -44,6 +44,17 @@ public class jobHandler {
 				crawlingService.crawling(siteLink);
 			}else {
 				logger.info("batchItv or siteSrl not found");
+			}
+			
+		//---------------------------------- 데이터 삭제	
+		}else if("delete".equals(job)){	
+			
+			logger.info("day : {} : ",  params.get("day" ));
+			
+			if(params.get("day") != null ){
+				crawlingService.deleteSiteLinkData( Integer.parseInt(params.get("day")));
+			}else {
+				logger.info("day parameter require. ex) day=20");
 			}
 			
 		}else {

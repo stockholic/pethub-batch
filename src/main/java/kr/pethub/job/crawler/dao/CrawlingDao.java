@@ -54,8 +54,8 @@ public class CrawlingDao extends MultiSqlSessionDaoSupport{
 	 * @param dataSrl
 	 * @return
 	 */
-	public int deleteSiteLinkData(Integer dataSrl) {
-		return delete("deleteSiteLinkData", dataSrl);
+	public int deleteSiteLinkData(int day) {
+		return delete("deleteSiteLinkData", day);
 	}
 	
 	/**

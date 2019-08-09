@@ -80,7 +80,7 @@
 	</update>
 	
 	<delete id="deleteSiteLinkData">
-		DELETE FROM  site_link_data WHERE data_srl = #{dataSrl}
+		DELETE FROM  site_link_data WHERE reg_dt &lt; ( SYSDATE() - INTERVAL #{day} DAY )
 	</delete>
 	
 	
