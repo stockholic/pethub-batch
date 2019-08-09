@@ -24,6 +24,7 @@
 		<if test="batchItv != '' and batchItv != null">
 		AND	sl.batch_itv = #{batchItv} 
 		</if>
+		ORDER BY RAND()
 		
 	</select>
 
