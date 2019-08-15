@@ -75,7 +75,8 @@ public class SsagaeSsagaeCoKr {
 			cli.setDataImg(dataImg);	
 			
 			//아이디 추출
-			String dataId = "1" + StringUtils.leftPad( dataLink.replaceAll(patternId, "$3") , 6, "0");
+//			String dataId = "1" + StringUtils.leftPad( dataLink.replaceAll(patternId, "$3") , 6, "0");
+			String dataId = dataLink.replaceAll(patternId, "$3");
 			logger.debug( "ID : {}" , dataId );
 			cli.setDataId( dataId );
 			

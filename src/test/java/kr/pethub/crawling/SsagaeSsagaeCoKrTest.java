@@ -32,12 +32,8 @@ public class SsagaeSsagaeCoKrTest {
 	@Test
 	public void 강아지무료_목록추출() throws IOException{
 		
-		
 		String linkUrl = "http://www.ssagae-ssagae.co.kr/bbs/board.php?bo_table=b0101";
 		obj.getDogList(linkUrl);
-		
-		String linkUrl2 = "http://www.ssagae-ssagae.co.kr/bbs/board.php?bo_table=b0102";
-		obj.getDogList(linkUrl2);
 		
 	}
 	
