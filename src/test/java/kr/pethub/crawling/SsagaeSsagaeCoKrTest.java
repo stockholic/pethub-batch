@@ -19,8 +19,8 @@ import kr.pethub.site.SsagaeSsagaeCoKr;
  * @author shkr
  *
  */
-//public class SsagaeSsagaeCoKrTest extends BaseTestCase{
-public class SsagaeSsagaeCoKrTest {
+public class SsagaeSsagaeCoKrTest extends BaseTestCase{
+//public class SsagaeSsagaeCoKrTest {
 	
 	 Logger logger = LoggerFactory.getLogger(this.getClass());
 	 
@@ -51,6 +51,6 @@ public class SsagaeSsagaeCoKrTest {
 	public void 데이터저장(){
 		
 		//siteSrl 일련번호
-		service.crawling("11");
+		service.crawling("12");
 	}
 }

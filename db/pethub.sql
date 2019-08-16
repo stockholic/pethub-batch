@@ -44,8 +44,9 @@ insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,
 insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (7,0,'게시판관리','',3,'Y');
 insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (10,1,'캐쉬관리','/adm/cache/list',4,'Y');
 insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (11,0,'배치관리','',2,'Y');
-insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (12,11,'사이트관리','#',1,'Y');
-insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (13,11,'사이트링크관리','#',2,'Y');
+insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (12,11,'사이트관리','/adm/batch/siteInfoList',1,'Y');
+insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (13,11,'사이트링크관리','/adm/batch/siteLinkList',2,'Y');
+insert into `auth_menu`(`menu_srl`,`parent_srl`,`menu_nm`,`menu_url`,`menu_stp`,`use_yn`) values (14,11,'사이트데이터관리','/adm/batch/siteLinkDataList',3,'Y');
 
 
 CREATE TABLE auth_menu_role (
@@ -167,7 +168,7 @@ CREATE TABLE site_link_data (
   data_id varchar(50) DEFAULT NULL COMMENT '아이디',
   data_title varchar(400) DEFAULT NULL COMMENT '제목',
   data_link varchar(200) DEFAULT NULL COMMENT '링크',
-  data_img varchar(100) DEFAULT NULL COMMENT '이미지',
+  data_img varchar(200) DEFAULT NULL COMMENT '이미지',
   data_content text COMMENT '내용',
   reg_dt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일',
   upt_dt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일',
