@@ -83,6 +83,10 @@
 	<delete id="deleteSiteLinkData">
 		DELETE FROM  site_link_data WHERE reg_dt &lt; ( SYSDATE() - INTERVAL #{day} DAY )
 	</delete>
+
+	<delete id="deleteSiteLinkLog">
+		DELETE FROM site_link_log WHERE reg_dt &lt; ( SYSDATE() - INTERVAL #{day} DAY )
+	</delete>
 	
 	
 	<update id="updateSiteLinkCnt">

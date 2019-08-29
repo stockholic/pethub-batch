@@ -68,7 +68,17 @@ public class CrawlingDao extends MultiSqlSessionDaoSupport{
 	}
 	
 	/**
-	 * 사이트 리크수 업데이트
+	 * 사이트 데이터 에러 로그 삭제
+	 * @param day
+	 * @return
+	 */
+	public int deleteSiteLinkLog(int day) {
+		return delete("deleteSiteLinkLog", day);
+	}
+	
+	
+	/**
+	 * 사이트 링크수 업데이트
 	 * @param siteLink
 	 * @return
 	 */

@@ -138,7 +138,14 @@ public class CrawlingService {
 	 * @param day
 	 */
 	public void deleteSiteLinkData(int day) {
+		
+		//사이트 데이터 삭제
 		crawlingDao.deleteSiteLinkData(day);
+
+		//사이트 데이터 에러 로그 삭제
+		crawlingDao.deleteSiteLinkLog(day);
+		
+		
 	}
 	
 }
