@@ -94,7 +94,7 @@
 
 [mysql]
 port                            	= 3306
-socket                          	= /usr/local/mysql/mysqld.sock
+socket                          	= /tmp/mysql.sock
 default-character-set = utf8
 
 [mysqld]
@@ -104,7 +104,7 @@ bind_address              		= 127.0.0.1 		# Change to 0.0.0.0 to allow remote se
 basedir 							= /usr/local/mysql
 datadir                        	= /usr/local/mysql/data
 pid_file                        	= /usr/local/mysql/data/mysqld.pid
-socket                          	= /tmp/mysqld.sock
+socket                          	= /tmp/mysql.sock
 tmpdir                          	= /tmp
 
 default_authentication_plugin = mysql_native_password
@@ -180,3 +180,4 @@ log_error                       		= /usr/local/mysql/data/mysql_error.log
 quick
 quote_names
 max_allowed_packet              = 64M
+
