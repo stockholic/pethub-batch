@@ -1,6 +1,7 @@
 package kr.pethub.site;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -119,11 +120,12 @@ public class DogZzangCoKr {
 		
 		List<SiteLinkData> list = new ArrayList<SiteLinkData>();
 		
-		String selector = "body > table > tbody > tr > td > table:nth-child(6) > tbody > tr > td:nth-child(2) > table:nth-child(6) > tbody > tr > td > table";
+		String selector = "body > table > tbody > tr > td > table:nth-child(6) > tbody > tr > td:nth-child(2) > table:nth-child(7) > tbody > tr > td > table";
 		String domain = "http://www.dog-zzang.co.kr";
 		String patternId ="(.*)(no=)([0-9]+)(.*)";
 
 		Elements elements = JsoupUtil.getElements(linkUrl,"euc-kr", selector);
+		
 		Collections.reverse(elements);
 		
 		int k = 1;
