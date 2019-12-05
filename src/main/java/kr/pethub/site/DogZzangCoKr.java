@@ -126,10 +126,6 @@ public class DogZzangCoKr {
 
 		Elements elements = JsoupUtil.getElements(linkUrl,"euc-kr", selector);
 		
-		
-		System.out.println(">>" + elements);
-		
-		
 		Collections.reverse(elements);
 		
 		int k = 1;
