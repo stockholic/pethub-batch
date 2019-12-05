@@ -120,11 +120,15 @@ public class DogZzangCoKr {
 		
 		List<SiteLinkData> list = new ArrayList<SiteLinkData>();
 		
-		String selector = "body > table > tbody > tr > td > table:nth-child(6) > tbody > tr > td:nth-child(2) > table:nth-child(7) > tbody > tr > td > table";
+		String selector = "#mtarget > table > tbody > tr > td > table:nth-child(6) > tbody > tr > td:nth-child(2) > table:nth-child(7) > tbody > tr > td > table";
 		String domain = "http://www.dog-zzang.co.kr";
 		String patternId ="(.*)(no=)([0-9]+)(.*)";
 
 		Elements elements = JsoupUtil.getElements(linkUrl,"euc-kr", selector);
+		
+		
+		System.out.println(">>" + elements);
+		
 		
 		Collections.reverse(elements);
 		
