@@ -35,18 +35,19 @@ public class SsagaeSsagaeCoKr {
 		
 		List<SiteLinkData> list = new ArrayList<SiteLinkData>();
 		
-		String selector = "#fboardlist > ul > li";
+		String selector = "#fboardlist > div.list-webzine .list-item";
 		String domain = "http://www.ssagae-ssagae.co.kr";
 		String patternId ="(.*)(wr_id=)([0-9]+)";
 
 		Elements elements = JsoupUtil.getElements(linkUrl, selector);
 		Collections.reverse(elements);
 		
-	//	System.out.println(elements);
-		
+//		System.out.println(">>>>>>>" +  elements);
 		
 //		for(  Element ele :  elements ) {
-//			System.out.println(ele.select(".fz_gallery_title"));
+//			System.out.println(ele.select(".media-heading").first().getElementsByTag("a").text());
+//			System.out.println(ele.select(".media-heading").first().getElementsByTag("a").attr("href"));
+//			System.out.println(ele.select(".img-item").first().getElementsByTag("a").attr("href"));
 //			System.out.println("----------------------------------------------------------------------");
 //		}
 		
@@ -60,17 +61,17 @@ public class SsagaeSsagaeCoKr {
 			SiteLinkData cli  = new SiteLinkData();
 			
 			//제목 추출
-			String dataTitle = ele.select(".fz_gallery_title").text().replace("파일첨부" ,"").replace("새글" ,"");
+			String dataTitle = ele.select(".media-heading").first().getElementsByTag("a").text();
 			logger.debug( "TITEL : {}" , JsoupUtil.specialCharacterRemove(dataTitle));
 			cli.setDataTitle( JsoupUtil.specialCharacterRemove(dataTitle)) ;
 			
 			//링크 추출
-			String dataLink = ele.getElementsByTag("a").attr("href");
+			String dataLink =  ele.select(".media-heading").first().getElementsByTag("a").attr("href");
 			logger.debug( "LINK : {}" , dataLink );
 			cli.setDataLink(dataLink);
 			
 			//이미지 추출
-			String dataImg =  ele.select(".fz_gallery_thumb").first().getElementsByTag("img").attr("src");
+			String dataImg =  ele.select(".img-item").first().getElementsByTag("a").attr("href");
 			logger.debug( "IMAGE : {}" , dataImg );
 			cli.setDataImg(dataImg);	
 			
